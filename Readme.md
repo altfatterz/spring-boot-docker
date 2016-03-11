@@ -3,19 +3,19 @@ Simple example dockerizing a Spring Boot service which leverages a mongodb stora
 Start the containers with
 
 ```
-docker-compose up
+$ docker-compose up
 ```
 
 Add some data. Note, your docker host might have a different IP, check it with echo $DOCKER_HOST command.
 
 ```
-echo '{"name":"St. Bonifatiuscollege ", "city":"Utrecht"}' | http post http://192.168.99.100:8080/schools
+$ echo '{"name":"St. Bonifatiuscollege ", "city":"Utrecht"}' | http post http://192.168.99.100:8080/schools
 ```
 
 Query:
 
 ```
-http get http://192.168.99.100:8080/schools/search/findByCityIgnoreCase\?city\=utrecht
+$ http get http://192.168.99.100:8080/schools/search/findByCityIgnoreCase\?city\=utrecht
 ```
 
 ```json
@@ -45,4 +45,4 @@ http get http://192.168.99.100:8080/schools/search/findByCityIgnoreCase\?city\=u
 
 ```
 
-In order to deploy it to AWS check the blog post:
+In order to deploy it to AWS check the blog post: [http://zoltanaltfatter.com/2016/03/11/dockerized-spring-boot-service-on-aws/](http://zoltanaltfatter.com/2016/03/11/dockerized-spring-boot-service-on-aws/)
