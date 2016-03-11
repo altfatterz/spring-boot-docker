@@ -1,0 +1,17 @@
+version: '2'
+services:
+  mongodb:
+    container_name: schools-datastore
+    image: mongo:3.2
+    command: mongod --smallfiles
+  web:
+    container_name: schools-service
+    build: build/libs
+    depends_on: # schools-datastore will be started before the schools-service
+      - mongodb
+    ports:
+      - "8080:8080"
+    links:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb/test
