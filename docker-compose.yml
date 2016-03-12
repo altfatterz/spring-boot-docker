@@ -7,6 +7,7 @@ services:
   web:
     container_name: schools-service
     build: build/libs
+    image: school-service-image
     depends_on: # schools-datastore will be started before the schools-service
       - mongodb
     ports:
